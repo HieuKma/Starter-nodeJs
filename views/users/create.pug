@@ -1,8 +1,18 @@
 extends ../layouts/common
 block content
-    h1 Create new user
+    h1.text-center.text-danger Create new user
 
-    form(action="/users/create" method="post")
-        span Name 
-        input(type="text" placeholder="input" name="name")
-        button Create 
+    if errors
+        each error in errors
+            .alert.alert-danger= error
+
+    form.mt-5(action="/users/create" method="post")
+        .input-group.mb-3
+            .input-group-prepend
+                span.input-group-text Name
+                input.form-control(type="text" placeholder="input" name="name" value=values ? values.name : "")
+        .input-group.mb-3
+            .input-group-prepend
+                span.input-group-text Phone
+                input.form-control(type="text" placeholder="input" name="phone" value=values ? values.phone : "")
+        button.btn.btn-primary.rounded Create

@@ -1,21 +1,24 @@
 extends ../layouts/common
 block content
-    .container
-        h1.text-danger.text-center Users list ...
-
-        a.btn.btn-primary.mb-3(href="/users/create") New
-        br
-
-        form.form-group.d-flex(action="/users/search" method="get")
+    h1.text-danger.text-center.mb-4 Users list ...
+        a.btn.btn-primary.ml-3(href="/users/create") New
+    .d-flex
+        form.form-group.d-flex.ml-auto(action="/users/search" method="get")
             input.form-control(type="text" placeholder="Nhap" name="q")
             button.btn.btn-primary.ml-3 Search
         //- luu gia tri can tim vao q
-        hr
 
-        //- show list users
-        ul
+    //- show list users
+    table.table.table-hover.table-bordered.text-center
+        thread
+            tr.bg-dark.text-white
+                th Name
+                th Phone
+                th Actions
+        tbody
             each user in users
-                li
-                    span= user.name
-                    span &nbsp
-                    a(href="/users/" + user.id) View
+                tr
+                    td= user.name
+                    td= user.phone
+                    td
+                        a.btn.btn-light(href="/users/" + user.id) View

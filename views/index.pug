@@ -1,4 +1,6 @@
-h1 Hello #{name}
-h2 I am server
+extends ./layouts/common
+block content
+    h1 Hello #{name}
+    h2 I am server
 
-a(href="/users") User 
+    a(href="/users") User 

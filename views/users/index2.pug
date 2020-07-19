@@ -1,18 +1,21 @@
-h1 Users list ...
+extends ../layouts/common
+block content
+    .container
+        h1.text-danger.text-center Users list ...
 
-a(href="/users/create") New
-br
+        a.btn.btn-primary.mb-3(href="/users/create") New
+        br
 
-form(action="/users/search" method="get")
-    input(type="text" placeholder="nhap" name="q")
-    button Search
-//- luu gia tri can tim vao q
-hr
+        form.form-group.d-flex(action="/users/search" method="get")
+            input.form-control(type="text" placeholder="Nhap" name="q")
+            button.btn.btn-primary.ml-3 Search
+        //- luu gia tri can tim vao q
+        hr
 
-//- show list users
-ul
-    each user in users
-        li
-            span= user.name
-            span &nbsp
-            a(href="/users/" + user.id) View
+        //- show list users
+        ul
+            each user in users
+                li
+                    span= user.name
+                    span &nbsp
+                    a(href="/users/" + user.id) View

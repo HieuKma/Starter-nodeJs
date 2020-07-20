@@ -14,7 +14,7 @@ module.exports.postCreate = (req, res, next) => {
         return;
     }
 
-    res.locals.success = true;
+    res.locals.success = true; // Luu bien dung cho ham tiep theo
 
     next();
 }

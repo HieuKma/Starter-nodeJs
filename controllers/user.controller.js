@@ -18,6 +18,7 @@ module.exports.search = (req, res) => {
 };
 
 module.exports.create = (req, res) => {
+    console.log(req.cookies);   // Hien thi cookie
     res.render('users/create');
 };
 

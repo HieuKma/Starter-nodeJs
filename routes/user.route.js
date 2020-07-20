@@ -7,15 +7,10 @@ var router = express.Router();
 
 router.get('/', controller.index);
 
-// function middleware1(req, res, next) {
-//     console.log('Middleware 1');
-//     next(); // chuyen sang middleware 2
-// }
-// function middleware2(req, res, next) {
-//     console.log('Middleware 2');
-//     res.send('Hello');
-// }
-// router.get('/test', middleware1, middleware2);
+router.get('/cookie', (req, res, next) => { // Cookies
+    res.cookie('user-id', 12345);
+    res.send('Hello Hieu');
+})
 
 router.get('/search', controller.search);
 

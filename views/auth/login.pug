@@ -1,0 +1,18 @@
+extends ../layouts/common
+block content
+    h1.text-center.text-danger Login
+
+    if errors
+        each error in errors
+            .alert.alert-danger= error
+
+    form.mt-5(action="/auth/login" method="post")
+        .input-group.mb-3
+            .input-group-prepend
+                span.input-group-text Email
+                input.form-control(type="text" placeholder="input" name="email" value=values ? values.email : "")
+        .input-group.mb-3
+            .input-group-prepend
+                span.input-group-text Password
+                input.form-control(type="password" placeholder="input" name="password" value=values ? values.password : "")
+        button.btn.btn-primary.rounded Login

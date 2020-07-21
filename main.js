@@ -3,6 +3,9 @@ const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 
 const userRoute = require('./routes/user.route');
+const authRoute = require('./routes/auth.route');
+
+const authMiddleware = require('./middlewares/auth.middleware');
 
 const app = express();
 const port = 3013;
@@ -20,6 +23,7 @@ app.get('/', (req, res) => {
     });
 });
 
-app.use('/users', userRoute);
+app.use('/users', authMiddleware.requireAuth, userRoute); // Kiem tra: phai login moi vao user duoc
+app.use('/auth', authRoute);
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`)); 

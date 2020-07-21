@@ -1,5 +1,5 @@
+const md5 = require('md5');
 const db = require('../db');
-const { values } = require('../db');
 
 // DN login
 module.exports.login = (req, res) => {
@@ -24,8 +24,10 @@ module.exports.postLogin = (req, res) => {
         return;
     }
 
+    let hashPassword = md5(password);
+
     // Neu co ID nhung dien sai mk
-    if(password !== user.password) {
+    if(hashPassword !== user.password) {
         res.render('auth/login', {
             errors: [
                 'Wrong password.'

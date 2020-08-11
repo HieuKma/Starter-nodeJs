@@ -1,3 +1,7 @@
+require('dotenv').config();
+
+console.log(process.env.SESSTION_SECRET);
+
 const express = require('express');
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
@@ -15,7 +19,7 @@ app.set('view engine', 'pug');
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-app.use(cookieParser('secret'));    // su dung cookiea
+app.use(cookieParser('process.env.SESSION_SECRET'));    // su dung cookiea
 
 app.get('/', (req, res) => {
     res.render('index', {
@@ -25,5 +29,6 @@ app.get('/', (req, res) => {
 
 app.use('/users', authMiddleware.requireAuth, userRoute); // Kiem tra: phai login moi vao user duoc
 app.use('/auth', authRoute);
+// console.log(process.env);
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`)); 
